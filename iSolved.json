@@ -1,0 +1,632 @@
+{
+    "schema": {
+        "crud_objects": {
+            "clients": {
+                "operations": {
+                    "clientsList": {
+                        "method": "get",
+                        "pagination": "none",
+                        "call": {
+                            "path": "/api/clients"
+                        },
+                        "processing_options": {
+                            "output_field": "results"
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "clientCode": "string*",
+                    "clientName": "string*",
+                    "id": "string*"
+                }
+            },
+            "client_details": {
+                "operations": {
+                    "clientsList": {
+                        "method": "get",
+                        "pagination": "none",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "clients",
+                            "iterator": "id",
+                            "path": "/api/clients/{iterator}",
+                            "queryParameters": {
+                                "includeDetails": true
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": null
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "alternatePayRates": [
+                        {
+                            "id": "string*",
+                            "payRateName": "string*"
+                        }
+                    ],
+                    "changeReasons": [
+                        {
+                            "id": "string*",
+                            "changeReasonType": {
+                                "id": "_:string*",
+                                "description": "_:string*"
+                            },
+                            "code": "string*",
+                            "description": "string*"
+                        }
+                    ],
+                    "clientCode": "string*",
+                    "clientName": "string*",
+                    "contacts": [
+                        {
+                            "id": "string*",
+                            "alternatePhoneNumber": "string*",
+                            "emailAddress": "string*",
+                            "faxNumber": "string*",
+                            "firstName": "string*",
+                            "inactiveDate": "string*",
+                            "lastName": "string*",
+                            "mobilePhoneNumber": "string*",
+                            "phoneNumber": "string*",
+                            "title": "string*",
+                            "type": "string*"
+                        }
+                    ],
+                    "employmentCategories": [
+                        {
+                            "id": "string*",
+                            "acaEmploymentStatus": "string*",
+                            "code": "string*",
+                            "description": "string*"
+                        }
+                    ],
+                    "employmentStatuses": [
+                        {
+                            "id": "string*",
+                            "code": "string*",
+                            "payrollStatus": {
+                                "id": "_:string*",
+                                "statusDescription": "_:string*"
+                            },
+                            "statusDescription": "string*"
+                        }
+                    ],
+                    "jobs": [
+                        {
+                            "id": "string*",
+                            "eeoCategory": "string*",
+                            "isFLSAExempt": "boolean*",
+                            "isInactive": "boolean*",
+                            "isManagerJob": "boolean*",
+                            "isSeasonal": "boolean*",
+                            "isSupervisorJob": "boolean*",
+                            "isUnion": "boolean*",
+                            "jobCode": "string*",
+                            "jobGroup": "string*",
+                            "jobTitle": "string*"
+                        }
+                    ],
+                    "labors": [
+                        {
+                            "id": "string*",
+                            "allowInTimeEntry": "boolean*",
+                            "laborTitle": "string*",
+                            "organizationFieldName": "string*",
+                            "sequenceNumber": "string*"
+                        }
+                    ],
+                    "legalCompanies": [
+                        {
+                            "id": "string*",
+                            "allowRemoteWorkers": "boolean*",
+                            "compensationPlans": "string*",
+                            "federalEIN": "string*",
+                            "forceDirectDepositPrenote": "boolean*",
+                            "iSolvedTimeEnabled": "boolean*",
+                            "legalCode": "string*",
+                            "legalName": "string*",
+                            "naicsCode": "string*",
+                            "status": "string*",
+                            "workLocations": [
+                                {
+                                    "id": "string*",
+                                    "address1": "string*",
+                                    "address2": "string*",
+                                    "addressDescription": "string*",
+                                    "city": "string*",
+                                    "geoCode": "string*",
+                                    "includeWorkSiteTaxFiling": "boolean*",
+                                    "isInactive": "boolean*",
+                                    "isRemoteWorkersOnly": "boolean*",
+                                    "minimumWageRule": "string*",
+                                    "overrideTaxCode": "string*",
+                                    "reportingUnitNumber": "string*",
+                                    "schoolDistrictCode": "string*",
+                                    "state": "string*",
+                                    "taxDistrict": "string*",
+                                    "timeZone": "string*",
+                                    "workLocationCode": "string*",
+                                    "workLocationDescription": "string*",
+                                    "zipCode": "string*"
+                                }
+                            ]
+                        }
+                    ],
+                    "miscEmployeeFields": [
+                        {
+                            "category": "string*",
+                            "dataType": "string*",
+                            "fieldCode": "string*",
+                            "fieldTitle": "string*"
+                        }
+                    ],
+                    "organizations": [
+                        {
+                            "id": "string*",
+                            "displayOrder": "string*",
+                            "includeInJob": "boolean*",
+                            "isLaborField": "boolean*",
+                            "isRequired": "boolean*",
+                            "isTeam": "boolean*",
+                            "organizationGroupId": "string*",
+                            "title": "string*"
+                        }
+                    ],
+                    "securityServiceGroup": {
+                        "id": "string*",
+                        "name": "string*"
+                    }
+                }
+            },
+            "client_managers": {
+                "operations": {
+                    "client_managersList": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "clients",
+                            "iterator": "id",
+                            "path": "/api/clients/{iterator}/managers",
+                            "base": {
+                                "clientId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": null
+                        }
+                    }
+                },
+                "key": "clientId",
+                "resources": {
+                    "clientId": "string*",
+                    "assignable": [
+                        {
+                            "id": "string*",
+                            "employeeName": "string*",
+                            "employeeNumber": "string*"
+                        }
+                    ],
+                    "organization": [
+                        {
+                            "id": "string*",
+                            "employeeName": "string*",
+                            "employeeNumber": "string*"
+                        }
+                    ]
+                }
+            },
+            "client_supervisors": {
+                "operations": {
+                    "client_supervisorsList": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "clients",
+                            "iterator": "id",
+                            "path": "/api/clients/{iterator}/supervisors",
+                            "base": {
+                                "clientId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": null
+                        }
+                    }
+                },
+                "key": "clientId",
+                "resources": {
+                    "clientId": "string*",
+                    "assignable": [
+                        {
+                            "id": "string*",
+                            "employeeName": "string*",
+                            "employeeNumber": "string*"
+                        }
+                    ],
+                    "organization": [
+                        {
+                            "id": "string*",
+                            "employeeName": "string*",
+                            "employeeNumber": "string*"
+                        }
+                    ]
+                }
+            },
+            "employees": {
+                "operations": {
+                    "employeesList": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "clients",
+                            "iterator": "id",
+                            "path": "/api/clients/{iterator}/employees",
+                            "queryParameters": {
+                                "includeMiscFields": true,
+                                "includeLabors": true,
+                                "includeOrganizations": true,
+                                "includeAlternativeRates": true
+                            },
+                            "base": {
+                                "clientId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "results"
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "clientId": "string*",
+                    "id": "string*",
+                    "acaEmploymentStatus": "string*",
+                    "activeDutySeparationDate": "string*",
+                    "adjustedServiceDate": "string*",
+                    "annualSalary": "string*",
+                    "assignedManager": {
+                        "id": "_:string*",
+                        "employeeName": "_:string*",
+                        "employeeNumber": "_:string*"
+                    },
+                    "assignedSupervisor": {
+                        "id": "_:string*",
+                        "employeeName": "_:string*",
+                        "employeeNumber": "_:string*"
+                    },
+                    "birthDate": "string*",
+                    "citizenship": "string*",
+                    "disabilityDescription": "string*",
+                    "disabilityNotes": "string*",
+                    "disabled": "boolean*",
+                    "disabledEffectiveDate": "string*",
+                    "disabledRequiresAccomodation": "boolean*",
+                    "eeoGenderOverride": "string*",
+                    "eligibleForRehire": "boolean*",
+                    "emailAddress": "string*",
+                    "employeeNumber": "string*",
+                    "employmentCategoryCode": "string*",
+                    "employmentCategoryEffectiveDate": "string*",
+                    "employmentCategoryFullTimeEquivalent": "string*",
+                    "employmentStatus": "string*",
+                    "enableSelfService": "boolean*",
+                    "ethnicOrigin": "string*",
+                    "gender": "string*",
+                    "hireDate": "string*",
+                    "hourlyRate": "string*",
+                    "idType": "string*",
+                    "isManager": "boolean*",
+                    "isPending": "boolean*",
+                    "isRecentlySeparatedVeteran": "boolean*",
+                    "isRemoteWorker": "boolean*",
+                    "isSupervisor": "boolean*",
+                    "jobCode": "string*",
+                    "jobEeoCategory": "string*",
+                    "jobEffectiveDate": "string*",
+                    "jobFLSAExempt": "boolean*",
+                    "jobGroup": "string*",
+                    "jobId": "string*",
+                    "jobIsSeasonal": "boolean*",
+                    "jobIsUnion": "boolean*",
+                    "jobTitle": "string*",
+                    "labors": [
+                        {
+                            "laborDescription": "string*",
+                            "laborField": "string*",
+                            "laborFieldId": "string*",
+                            "laborValue": "string*"
+                        }
+                    ],
+                    "legalCode": "string*",
+                    "maritalStatus": "string*",
+                    "militaryStatus": "string*",
+                    "miscDataSets": [
+                        {
+                            "fields": [
+                                {
+                                    "id": {
+                                        "category": "string*",
+                                        "dataType": "string*",
+                                        "fieldCode": "string*",
+                                        "fieldTitle": "string*",
+                                        "lookups": [
+                                        {
+                                            "description": "string*",
+                                            "id": "string*"
+                                        }
+                                        ]
+                                    },
+                                    "miscValue": "string*"
+                                }
+                            ],
+                            "id": "string*",
+                            "isDeleted": "boolean*",
+                            "miscFieldCategory": {
+                                    "categoryTitle": "_:string*",
+                                    "id": "_:string*",
+                                    "isDataSet": "_:boolean*"
+                            }
+                        }
+                    ],
+                    "miscFields": [
+                        {
+                            "title": "string*",
+                            "value": "string*"
+                        }
+                    ],
+                    "nameAddress": {
+                        "id": "_:string*",
+                        "address1": "_:string*",
+                        "address2": "_:string*",
+                        "city": "_:string*",
+                        "firstName": "_:string*",
+                        "lastName": "_:string*",
+                        "middleName": "_:string*",
+                        "overrideAddress": {
+                            "address1": "_:string*",
+                            "address2": "_:string*",
+                            "city": "_:string*",
+                            "country": "_:string*",
+                            "deleteAddress": "_:boolean*",
+                            "foreignPostalCode": "_:string*",
+                            "foreignStateProvince": "_:string*",
+                            "militaryCity": "_:string*",
+                            "militaryState": "_:string*",
+                            "state": "_:string*",
+                            "useForPaychecks": "_:boolean*",
+                            "useForTaxForms": "_:boolean*",
+                            "zipCode": "_:string*"
+                        },
+                        "preferredName": "_:string*",
+                        "preferredPronouns": "_:string*",
+                        "prefix": "_:string*",
+                        "residentGeoCode": "_:string*",
+                        "schoolDistrictCode": "_:string*",
+                        "state": "_:string*",
+                        "suffix": "_:string*",
+                        "zipCode": "_:string*"
+                    },
+                    "normalHours": "string*",
+                    "organizations": [
+                        {
+                            "id": "string*",
+                            "displayOrder": "string*",
+                            "organizationId": "string*",
+                            "title": "string*",
+                            "value": "string*",
+                            "valueDescription": "string*"
+                        }
+                    ],
+                    "originalHireDate": "string*",
+                    "overrideAddress": {
+                        "address1": "_:string*",
+                        "address2": "_:string*",
+                        "city": "_:string*",
+                        "country": "_:string*",
+                        "deleteAddress": "_:boolean*",
+                        "foreignPostalCode": "_:string*",
+                        "foreignStateProvince": "_:string*",
+                        "militaryCity": "_:string*",
+                        "militaryState": "_:string*",
+                        "state": "_:string*",
+                        "useForPaychecks": "_:boolean*",
+                        "useForTaxForms": "_:boolean*",
+                        "zipCode": "_:string*"
+                    },
+                    "payFrequency": "string*",
+                    "payGroup": "string*",
+                    "payRates": [
+                        {
+                            "payRateName": "string*",
+                            "rateValue": "string*"
+                        }
+                    ],
+                    "payType": "string*",
+                    "perPaySalary": "string*",
+                    "personal": {
+                        "id": "string*",
+                        "faxNumber": "string*",
+                        "homePhone": "string*",
+                        "mobilePhone": "string*",
+                        "officePhone": "string*",
+                        "personalEmailAddress": "string*",
+                        "preferredPronouns": "string*"
+                    },
+                    "profilePicture": "string*",
+                    "protectedVeteran": "boolean*",
+                    "reciprocityRule": "string*",
+                    "rehireDate": "string*",
+                    "salaryEffectiveDate": "string*",
+                    "socCode": "string*",
+                    "statusDate": "string*",
+                    "taxExemptStatus": "string*",
+                    "team": {
+                        "id": "_:string*",
+                        "calendarRule": {
+                            "id": "_:string*",
+                            "restrictedAbsencePolicies": [
+                                {
+                                    "id": "string*",
+                                    "absenceName": "string*",
+                                    "accrual": {
+                                        "id": "_:string*",
+                                        "accrualDescription": "_:string*",
+                                        "accrualName": "_:string*"
+                                    },
+                                    "allowCancellationRequest": "boolean*",
+                                    "allowEmployeeAccess": "boolean*",
+                                    "allowManagerAccess": "boolean*",
+                                    "allowSupervisorAccess": "boolean*",
+                                    "allowTimeOffRequest": "boolean*",
+                                    "defaultHours": "string*",
+                                    "isEarningPayItem": "boolean*",
+                                    "maximumHours": "string*",
+                                    "minimumHours": "string*",
+                                    "timeOffRequestBalanceLimit": "string*",
+                                    "timeOffRequestDurationLimitDays": "string*",
+                                    "validHourValues": "string*"
+                                }
+                            ],
+                            "ruleDescription": "_:string*",
+                            "ruleName": "_:string*",
+                            "timeOffRestrictionDates": [
+                                {
+                                    "endDate": "string*",
+                                    "startDate": "string*"
+                                }
+                            ]
+                        },
+                        "organizationField": "_:string*",
+                        "organizationValues": [
+                            {
+                                "code": "string*",
+                                "description": "string*",
+                                "isInactive": "boolean*"
+                            }
+                        ],
+                        "teamDescription": "_:string*",
+                        "teamName": "_:string*"
+                    },
+                    "terminationDate": "string*",
+                    "terminationReason": "string*",
+                    "terminationType": "string*",
+                    "timecardPunchStatusDate": "string*",
+                    "timecardPunchStatusIsIn": "boolean*",
+                    "timeclockId": "string*",
+                    "tobaccoUse": "boolean*",
+                    "tobaccoUseEffectiveDate": "string*",
+                    "uniqueId": "string*",
+                    "updatedDisabledEffectiveDate": "string*",
+                    "updatedHireDate": "string*",
+                    "updatedJobEffectiveDate": "string*",
+                    "updatedSalaryEffectiveDate": "string*",
+                    "updatedStatusDate": "string*",
+                    "veteranStatusNotSpecified": "boolean*",
+                    "workersCompCode": "string*",
+                    "workLocation": "string*",
+                    "workLocationDashDescription": "string*",
+                    "wotc": {
+                        "applicationDate": "_:string*",
+                        "includeCertification": "_:string*",
+                        "jobAcceptedDate": "_:string*",
+                        "jobOfferedDate": "_:string*"
+                    }
+                }
+            },
+            "employeesMinimal": {
+                "operations": {
+                    "employeesMinimalList": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "clients",
+                            "iterator": "id",
+                            "path": "/api/clients/{iterator}/employeesMinimal",
+                            "base": {
+                                "clientId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "results"
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "clientId": "string*",
+                    "id": "string*",
+                    "city": "string*",
+                    "employeeNumber": "string*",
+                    "employmentStatus": "string*",
+                    "firstName": "string*",
+                    "formalName": "string*",
+                    "hireDate": "string*",
+                    "isManager": "boolean*",
+                    "isSupervisor": "boolean*",
+                    "jobCode": "string*",
+                    "jobTitle": "string*",
+                    "lastName": "string*",
+                    "legalCode": "string*",
+                    "middleInitial": "string*",
+                    "originalHireDate": "string*",
+                    "preferredName": "string*",
+                    "selfServiceEmail": "string*",
+                    "state": "string*",
+                    "suffix": "string*",
+                    "terminationDate": "string*",
+                    "timeclockId": "string*",
+                    "uniqueId": "string*"
+                }
+            }
+      }
+    },
+    "rest": {
+        "config": {
+            "baseUrl": "https://{tenant_id}/rest",
+            "sslLegacyProtocols": true,
+            "get": {
+                "pagination": {
+                    "mode": "generic",
+                    "params": {
+                        "page": "{page_number}",
+                        "pageSize": "{page_size}"
+                    },
+                    "totalPageAttribute": "totalPages"
+                }
+            },
+            "authentication": "client_credentials",
+            "call_handling": "generic",
+            "test_connection": {
+                "url": "/api/clients"
+            },
+            "socket_timeout": 3600000
+        },
+        "authOptions": {
+            "authUrl": "https://{tenant_id}/rest/api/token",
+            "type": "client-credentials"
+        }
+    },
+    "connection": {
+        "items": [
+            {
+                "name": "tenant_id",
+                "type": "textbox",
+                "label": "Tenent URL:",
+                "value": "www.hkp-usa.com",
+                "required": true,
+                "order": 1
+            },
+            {
+                "name": "page_size",
+                "type": "textbox",
+                "label": "Page Size:",
+                "value": "500"
+            }
+        ]
+    }
+  }
