@@ -1,5 +1,7 @@
 # iSolved
 
+Read the [iSolved integration documentation](https://docs.nimsuite.com/en/integrations/isolved) for connector details and related guides.
+
 <img src="https://github.com/user-attachments/assets/eb16d855-f7d0-4e7c-a32f-cdc8ecf49f65" width="256px" />
 
 ## Data Tables
